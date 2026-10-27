@@ -25,8 +25,8 @@ export function mountSphere(host: HTMLElement, o: SphereOptions) {
   }
 
   const st = { rot: 0, vel: 0, drag: false, x: 0 };
-  let hw = 300, hh = 60;
-  const measure = () => { const r = head?.getBoundingClientRect(); if (r) { hw = r.width / 2 + 24; hh = r.height / 2 + 20; } };
+  let hw = 300, hh = 60; // запас вокруг текста считается в measure: плитки не прижимаются к заголовку
+  const measure = () => { const r = head?.getBoundingClientRect(); if (r) { hw = r.width / 2 + 40; hh = r.height / 2 + 64; } };
   measure(); const ro = new ResizeObserver(measure); if (head) ro.observe(head);
   const prevO: string[] = new Array(N).fill(''), prevF: string[] = new Array(N).fill('');
   const paint = () => {
@@ -42,7 +42,7 @@ export function mountSphere(host: HTMLElement, o: SphereOptions) {
       const k = PERSP / (PERSP - z * R), sx = x * R * k, sy = y * R * k;
       const tw = (TILE * k * (ratios[i] < 1 ? 0.78 : 1)) / 2, th = tw / ratios[i];
       const gap = Math.max(Math.max(0, Math.abs(sx) - (hw + tw)), Math.max(0, Math.abs(sy) - (hh + th)));
-      const win = Math.max(0, Math.min(1, 1 - gap / 48)); // пересечение с заголовком
+      const win = Math.max(0, Math.min(1, 1 - gap / 110)); // мягкая зона затухания вокруг заголовка
       const edge = Math.max(0, Math.min(1, z / 0.25));     // края сферы мягко уходят
       const os = ((1 - win) * (0.25 + 0.75 * edge)).toFixed(2); if (os !== prevO[i]) { t.style.opacity = os; prevO[i] = os; }
       const f = blur && win > 0.05 ? `blur(${Math.round(win * 6) * 2}px)` : 'none'; if (f !== prevF[i]) { t.style.filter = f; prevF[i] = f; }
