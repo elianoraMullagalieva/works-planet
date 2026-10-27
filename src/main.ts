@@ -8,22 +8,25 @@ const html = (s: string) => { const t = document.createElement('template'); t.in
 type Spec = { img: string; ratio: number } | { card: 'red' | 'white' | 'dark'; big?: string; small?: string; pills?: string[]; bars?: number[]; ratio: number };
 const SEQ: Spec[] = [
   { img: 'works/w3.webp', ratio: 900 / 552 },
-  { card: 'red', big: '+38%', small: 'визитов после редизайна', ratio: 1.3 },
-  { img: 'works/c1.webp', ratio: 16 / 9 },
+  { img: 'works/k-makeitpay.webp', ratio: 1000 / 606 },
+  { img: 'works/k-strategy.webp', ratio: 405 / 508 },
   { img: 'works/case-lime.webp', ratio: 16 / 9 },
-  { card: 'white', big: '14 дней', small: 'от брифа до запуска', ratio: 1.3 },
+  { img: 'works/c1.webp', ratio: 16 / 9 },
+  { img: 'works/k-design.webp', ratio: 385 / 551 },
   { img: 'works/mac20.webp', ratio: 1200 / 744 },
+  { img: 'works/k-neiro.webp', ratio: 1000 / 664 },
   { img: 'works/c4.webp', ratio: 16 / 9 },
-  { card: 'dark', big: '4,8%', small: 'конверсия в заявку', ratio: 1 },
+  { img: 'works/k-vinyl.webp', ratio: 1000 / 534 },
   { img: 'works/case-formo.webp', ratio: 16 / 9 },
   { img: 'works/w2.webp', ratio: 900 / 505 },
-  { card: 'white', pills: ['Лендинг', 'Квиз', 'Кабинет'], small: 'три типа сайтов', ratio: 1 },
+  { img: 'works/k-vinyl-grid.webp', ratio: 1000 / 791 },
   { img: 'works/c5.webp', ratio: 16 / 9 },
   { img: 'works/mac8.webp', ratio: 1200 / 744 },
-  { card: 'red', big: '24', small: 'заявки за первую неделю', ratio: 1.3 },
+  { img: 'works/k-anna.webp', ratio: 1400 / 787 },
   { img: 'works/w1.webp', ratio: 900 / 500 },
   { img: 'works/c6.webp', ratio: 16 / 9 },
 ];
+
 
 
 const small = matchMedia('(max-width: 768px)').matches, narrow = matchMedia('(max-width: 900px)').matches;
